@@ -1,0 +1,208 @@
+swagger: '2.0'
+info:
+  title: API Places
+  version: '1.0'
+host: apimgr-zs-01.azure-api.net
+basePath: /places/v1
+schemes:
+  - https
+securityDefinitions:
+  apiKeyHeader:
+    type: apiKey
+    name: Ocp-Apim-Subscription-Key
+    in: header
+  apiKeyQuery:
+    type: apiKey
+    name: subscription-key
+    in: query
+security:
+  - apiKeyHeader: []
+  - apiKeyQuery: []
+paths:
+  /places:
+    get:
+      description: Retrieve a list of places.
+      operationId: place-api
+      summary: API Places
+      parameters:
+        - name: location_lat
+          in: query
+          description: The latitude location
+          type: string
+        - name: location_long
+          in: query
+          description: The longitude location
+          type: string
+        - name: place_name
+          in: query
+          description: The name of the place to search
+          type: string
+        - name: sort_by
+          in: query
+          description: The item for be sorted
+          type: string
+        - name: order_by
+          in: query
+          description: 'Type of ordination, ascendent (asc) or descendent (desc).'
+          type: string
+        - name: x-api-key
+          in: header
+          description: Base authentication header.
+          type: string
+      responses:
+        '200':
+          description: 'Success'
+          schema:
+            $ref: '#/definitions/places_response'
+        '400':
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/api_error'
+        '401':
+          description: ''
+        '403':
+          description: ''
+        '404':
+          description: ''
+        '500':
+          description: ''
+      produces:
+        - application/json
+  /places_logs:
+    get:
+      description: The API to retrieve all logs by "/places" API.
+      operationId: api-places-logs
+      summary: API Places Logs
+      parameters:
+        - name: type_of
+          in: query
+          description: The type of log to search.
+          type: string
+        - name: x-api-key
+          in: header
+          type: string
+      responses:
+        '200':
+          description: ''
+        '400':
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/api_error'
+        '401':
+          description: ''
+        '403':
+          description: ''
+        '404':
+          description: ''
+        '500':
+          description: ''
+tags: []
+definitions:
+  api_error:
+    type: object
+    properties:
+      timestamp:
+        type: string
+        format: datetime
+        example: '2018-08-20T15:00:00Z'
+      error_code:
+        type: string
+        example: Z001
+      message:
+        type: string
+        example: Required fields
+      details:
+        type: array
+        items:
+          type: string
+        example:
+          - field_one
+          - field_two
+  places_response:
+    type: object
+    properties:
+      data: 
+        type: array
+        items: 
+          type: object
+          properties: 
+            place_id: 
+              type: string
+              example: ChIJp2Mn4E2-woARQS2FILlxUzk
+            place_details: 
+              type: object
+              properties: 
+                adr_address: 
+                  type: string
+                  example: 5 <span class=street-address>48 Pirrama Rd</span> <span class=locality>Pyrmont</span> <span class=region>NSW</span> <span class=postal-code>2009</span> <span class=country-name>Australia</span>
+                formatted_address: 
+                  type: string
+                  example: 5 48 Pirrama Rd Pyrmont NSW 2009 Australia
+                formatted_phone_number: 
+                  type: string
+                  example: (02) 9374 4000
+                geometry: 
+                  type: object
+                  properties: 
+                    location: 
+                      type: object
+                      properties: 
+                        lat: 
+                          type: number
+                          example: -33.866651
+                        lng: 
+                          type: number
+                          example: 151.195827
+                icon: 
+                  type: string
+                  example: https://maps.gstatic.com/mapfiles/place_api/icons/generic_business-71.png
+            routes: 
+              type: array
+              items: 
+                type: object
+                properties: 
+                  travel_mode: 
+                    type: string
+                    example: driving
+                  distance: 
+                    type: object
+                    properties: 
+                      text: 
+                        type: string
+                        example: 35.9 mi
+                      value: 
+                        type: number
+                        example: 57824
+                  duration: 
+                    type: object
+                    properties: 
+                      text: 
+                        type: string
+                        example: 51 mins
+                      value: 
+                        type: number
+                        example: 3062
+                  end_address: 
+                    type: string
+                    example: Universal Studios Blvd Los Angeles CA 90068 USA
+                  end_location: 
+                    type: object
+                    properties: 
+                      lat: 
+                        type: number
+                        example: 34.1330949
+                      lng: 
+                        type: number
+                        example: -118.3524442
+                  start_address: 
+                    type: string
+                    example: Disneyland (Harbor Blvd.) S Harbor Blvd Anaheim CA 92802 USA
+                  start_location: 
+                    type: object
+                    properties: 
+                      lat: 
+                        type: number
+                        example: 33.8098177
+                      lng: 
+                        type: number
+                        example: -117.9154353         
