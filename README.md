@@ -19,6 +19,7 @@ I split the development in two pieces.
 - Python 3.7.4
 - Flask
 - Google APIs (Place detail and directions)
+- just one more info
 
 ## Run
 
