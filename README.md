@@ -19,7 +19,8 @@ I split the development in two pieces.
 - Python 3.7.4
 - Flask
 - Google APIs (Place detail and directions)
-- just one more info
+  - To get started with Google APis, the first step is getting and configuring the [API Key](https://developers.google.com/maps/documentation/javascript/get-api-key).
+ - just one more info
 
 ## Run
 
