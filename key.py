@@ -1,1 +1,1 @@
-key = "apikey"
+key = "key"

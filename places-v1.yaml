@@ -2,7 +2,7 @@ swagger: '2.0'
 info:
   title: API Places
   version: '1.0'
-host: apimgr-zs-01.azure-api.net
+host: localhost:5000
 basePath: /places/v1
 schemes:
   - https
@@ -25,13 +25,29 @@ paths:
       operationId: place-api
       summary: API Places
       parameters:
-        - name: location_lat
+        - name: start_address
           in: query
-          description: The latitude location
+          description: The start address point
           type: string
-        - name: location_long
+        - name: end_address
           in: query
-          description: The longitude location
+          description: The end address point
+          type: string
+        - name: start_location_lat
+          in: query
+          description: The start latitude location
+          type: string
+        - name: start_location_long
+          in: query
+          description: The start longitude location
+          type: string
+        - name: end_location_lat
+          in: query
+          description: The end latitude location
+          type: string
+        - name: end_location_long
+          in: query
+          description: The end longitude location
           type: string
         - name: place_name
           in: query
