@@ -94,7 +94,7 @@ ENV/
 env.bak/
 venv.bak/
 app/venv
-
+.idea/
 
 
 # Spyder project settings
