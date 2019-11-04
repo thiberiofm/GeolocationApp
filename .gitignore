@@ -26,8 +26,9 @@ wheels/
 .DS_Store
 MANIFEST
 
+
 # PyInstaller
-#  Usually these files are written by a python script from a template
+#  Usually these files are written by user_data.txt python script from user_data.txt template
 #  before PyInstaller builds the exe, so as to inject date/other infos into it.
 *.manifest
 *.spec
@@ -90,6 +91,9 @@ venv/
 ENV/
 env.bak/
 venv.bak/
+app/venv
+
+
 
 # Spyder project settings
 .spyderproject
@@ -103,3 +107,4 @@ venv.bak/
 
 # mypy
 .mypy_cache/
+__pycache__

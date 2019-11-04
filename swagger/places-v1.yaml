@@ -21,7 +21,7 @@ security:
 paths:
   /places:
     get:
-      description: Retrieve a list of places.
+      description: Retrieve user_data.txt list of places.
       operationId: place-api
       summary: API Places
       parameters:
