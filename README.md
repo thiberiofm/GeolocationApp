@@ -25,7 +25,7 @@ I split the development in two pieces.
 
 - Google APIs (Place detail and directions)
   - To get started with Google APis, the first step is getting and configuring the [API Key](https://developers.google.com/maps/documentation/javascript/get-api-key).
-  - ** To the test work properly I hard put mine. This Key must be retrieved dynamically **.
+    ** To the test work properly I hard put mine. This Key must be retrieved dynamically. **
  - Download the Dockerfile:
  
  ```console
@@ -40,16 +40,11 @@ $ docker run -d -p 5000:5000 thiberiofm/geolocation_app_flask
  
 ## Run
 
-- Install Python 3.
--  Run app.py.
-
-After the app is running just call the API, where "place_name" value is the local to be searched:
+After the docker image is running just call the API, where "place_name" value is the local to be searched:
 ```console
 curl -X GET \
   'http://localhost:5000/places/v1/places?place_name=mexico' 
 ```
-
-
 
 # Resources
 
@@ -58,3 +53,4 @@ The Google Cloud Plataform (GCP) APIs:
 * [Google Directions API](https://developers.google.com/maps/documentation/directions) - Google Developer portal
 * [Google Places Details API](https://developers.google.com/places/web-service/details) - Google Developer portal
 * [Google API Key](https://developers.google.com/places/web-service/get-api-key) - Google Developer portal
+* [Flask Doc](http://flask.palletsprojects.com/en/1.1.x/) - Flask framework
