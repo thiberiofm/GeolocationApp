@@ -29,18 +29,78 @@ def list_places():
 
     query = place_name
 
-    search_payload = {"key":key, "query":query}
+    search_payload = {"key": key, "query": query}
     search_req = requests.get(search_url, params=search_payload)
     search_json = search_req.json()
 
-    place_id = search_json["results"][0]["place_id"]
+    google_response_place_id = search_json["results"][0]["place_id"]
+    google_response_place_name = search_json["results"][0]["name"]
 
-    details_payload = {"key":key, "placeid":place_id}
+    details_payload = {"key": key, "placeid": google_response_place_id}
     details_resp = requests.get(details_url, params=details_payload)
     details_json = details_resp.json()
 
-    url = details_json["result"]["url"]
-    return jsonify({'data':{ 'url' : url }})
+    google_response_formatted_address = details_json["result"]["formatted_address"]
+    google_response_geometry_location_lat = details_json["result"]["geometry"]["location"]["lat"]
+    google_response_geometry_location_lng = details_json["result"]["geometry"]["location"]["lng"]
+    """
+Mocking the distance API due time to complete
+       """
+    google_response_routes_travel_mode = "driving"
+    google_response_routes_distance_text = "39km"
+    google_response_routes_distance_value = 3900
+    google_response_routes_duration_text = "51 mins"
+    google_response_routes_duration_value = 3062
+    google_response_routes_end_address = "Guarulhos"
+    google_response_routes_end_location_lat = 34.1330949
+    google_response_routes_end_location_lng = 34.1330949
+    google_response_routes_start_address = "Osasco"
+    google_response_routes_start_location_lat = 34.1330949
+    google_response_routes_start_location_lng = 34.1330949
+
+    return jsonify({
+        "data": [
+            {"place_id": google_response_place_id,
+             "place_name": google_response_place_name,
+             "place_details": {
+                 "formatted_address": google_response_formatted_address,
+                 "formatted_phone_number": google_response_formatted_address,
+                 "geometry": {
+                     "location": {
+                         "lat": google_response_geometry_location_lat,
+                         "lng": google_response_geometry_location_lng
+                     }
+                 }
+
+             },
+             "routes": [{
+                 "travel_mode": google_response_routes_travel_mode,
+                 "distance": {
+                     "text": google_response_routes_distance_text,
+                     "value": google_response_routes_distance_value
+                 },
+                 "duration": {
+                     "text": google_response_routes_duration_text,
+                     "value": google_response_routes_duration_value
+
+                 },
+                 "end_address": google_response_routes_end_address,
+                 "end_location": {
+                     "lat": google_response_routes_end_location_lat,
+                     "lng": google_response_routes_end_location_lng
+                 },
+                 "start_address": google_response_routes_start_address,
+                 "start_location": {
+                     "lat": google_response_routes_start_location_lat,
+                     "lng": google_response_routes_start_location_lng
+                 }
+
+             }
+             ]
+             }
+        ]
+    })
+
 
 if __name__ == "__main__":
     app.run(debug=True)
