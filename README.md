@@ -23,12 +23,20 @@ I split the development in two pieces.
  
 ## Installation
 
-- Python 3.7.4
-- Flask
 - Google APIs (Place detail and directions)
   - To get started with Google APis, the first step is getting and configuring the [API Key](https://developers.google.com/maps/documentation/javascript/get-api-key).
- - just one more info
+ - Download the Dockerfile:
+ 
+ ```console
+$ docker pull thiberiofm/geolocation_app_flask
+```
 
+After the download completes, you have to run the image
+
+ ```console
+$ docker run -d -p 5000:5000 thiberiofm/geolocation_app_flask
+```
+ 
 ## Run
 
 - Install Python 3.
