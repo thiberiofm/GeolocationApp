@@ -33,6 +33,7 @@ I split the development in two pieces.
 
 - Install Python 3.
 -  Run app.py.
+- 
 
 # Resources
 

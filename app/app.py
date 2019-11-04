@@ -20,9 +20,20 @@ def list_places():
     """
        Function to receive the places infos to search at Googlemaps.
        """
-
-    if not len(request.args) > 0:
-        return make_response(jsonify({'error': 'Bad Request'}), 400)
+    {
+        "timestamp": "2018-08-20T15:00:00Z",
+        "error_code": "Z001",
+        "message": "Required fields",
+        "details": [
+            "field_one",
+            "field_two"
+        ]
+    }
+    if not (len(request.args) > 0 ) or (key == "key"):
+        return make_response(jsonify({'timestamp': '2018-08-20T15:00:00', 'error_code':'ABC-System Lorem', 'message' : 'You shall not pass', 'details':[
+            'field_one',
+        'field_two']
+        }), 400)
 
     query_parameters = request.args
     place_name = query_parameters.get('place_name')
