@@ -33,7 +33,14 @@ I split the development in two pieces.
 
 - Install Python 3.
 -  Run app.py.
-- 
+
+After the app is running just run the following command on terminal:
+```console
+curl -X GET \
+  'http://localhost:5000/places/v1/places?place_name=mexico' 
+```
+
+
 
 # Resources
 
