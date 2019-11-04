@@ -25,6 +25,7 @@ I split the development in two pieces.
 
 - Google APIs (Place detail and directions)
   - To get started with Google APis, the first step is getting and configuring the [API Key](https://developers.google.com/maps/documentation/javascript/get-api-key).
+  - ** To the test work properly I hard put mine. This Key must be retrieved dynamically **.
  - Download the Dockerfile:
  
  ```console
